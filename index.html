@@ -14,8 +14,9 @@
     <header>
       <img class="logo" src="images/logo.svg" alt="Keepable logo" />
       <p>
-        <strong>Welcome to {keepable}</strong>. Today's Forecast for Santiago de
-        Surco, Lima Province, Peru: 18°, Cloudy
+        <strong>Welcome to {keepable}</strong>. Today's Forecast for
+        <span id="province">Lima Province</span>,
+        <span id="country">Peru</span>: 18°, Cloudy
       </p>
     </header>
     <main>
@@ -36,6 +37,16 @@
       <section class="main-section">
         <div id="notes-section" class="notes-section">
           notes section
+          <!-- <div class="card">
+            <p class="card-title">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+              hic corrupti quis excepturi vero neque?
+            </p>
+            <div class="card-options">
+              <button class="card-options__color"></button>
+              <button class="card-options__trash"></button>
+            </div>
+          </div> -->
         </div>
         <div id="trash-section" class="trash-section">
           trash section
@@ -47,5 +58,6 @@
       <a href="">@fer</a>
     </footer>
   </body>
-  <script src="./js/main.js"></script>
+  <script src="./js/options.js"></script>
+  <script src="./js/geolocation.js"></script>
 </html>
