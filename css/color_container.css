@@ -20,17 +20,17 @@
   background-size: cover;
 }
 .footer-icon-color {
-  background-image: url(img/icon_without_hover.svg);
+  background-image: url(../img/icon_without_hover.svg);
 }
 .footer-icon-color:hover {
-  background-image: url(img/icon_with_hover.svg);
+  background-image: url(../img/icon_with_hover.svg);
 }
 
 .footer-icon-trash {
-  background-image: url(img/trash.svg);
+  background-image: url(../img/trash.svg);
 }
 .footer-icon-trash:hover {
-  background-image: url(img/trash_with_hover.svg);
+  background-image: url(../img/trash_with_hover.svg);
 }
 
 .color-dropdown-content-circulo {

@@ -1,0 +1,72 @@
+.card {
+  height: 200px;
+  width: 200px;
+  padding: 20px;
+  box-shadow: 5px 5px 15px rgba(153, 155, 158, 0.85);
+  border-radius: 8px;
+  color: #000000;
+  position: relative;
+}
+.card-content {
+  font-size: 13px;
+  line-height: 24px;
+  min-height: calc(100% - 38px);
+}
+.card-options {
+  height: 38px;
+}
+
+.card-white {
+  background-color: white;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+/* form note */
+
+.form-note {
+  height: 130px;
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  margin: 0 auto;
+  box-shadow: 5px 5px 15px rgba(153, 155, 158, 0.85);
+  border-radius: 8px;
+  color: #000000;
+  position: relative;
+}
+.form-content {
+  height: calc(100% - 38px);
+}
+.form-control {
+  height: 38px;
+  display: flex;
+  justify-content: space-between;
+}
+.form-body {
+  width: 100%;
+  resize: none;
+  border: 0px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  color: black;
+}
+
+.form-white {
+  background-color: white;
+}
+
+.form-control__keep-it {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+}
+.form-btn {
+  height: 36px;
+  background-color: transparent;
+  border: none;
+}
