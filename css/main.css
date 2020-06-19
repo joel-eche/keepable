@@ -113,7 +113,12 @@ footer a:hover {
 }
 
 .trash-section {
-  display: none;
+  /* display: none; */
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, 24%);
+  width: 100%;
+  margin-top: 60px;
 }
 
 .message-info {

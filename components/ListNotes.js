@@ -8,30 +8,30 @@ const notes = [
     active: true,
     pinned: false,
   },
-  {
-    title: "Note 2",
-    body:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus lacus sapien, ut rhoncus odio tristique vel.",
-    classColor: "card-white",
-    active: true,
-    pinned: false,
-  },
-  {
-    title: "Note 3",
-    body:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus lacus sapien, ut rhoncus odio tristique vel.",
-    classColor: "card-white",
-    active: true,
-    pinned: false,
-  },
-  {
-    title: "Note 4",
-    body:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus lacus sapien, ut rhoncus odio tristique vel.",
-    classColor: "card-white",
-    active: true,
-    pinned: false,
-  },
+  // {
+  //   title: "Note 2",
+  //   body:
+  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus lacus sapien, ut rhoncus odio tristique vel.",
+  //   classColor: "card-white",
+  //   active: true,
+  //   pinned: false,
+  // },
+  // {
+  //   title: "Note 3",
+  //   body:
+  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus lacus sapien, ut rhoncus odio tristique vel.",
+  //   classColor: "card-white",
+  //   active: true,
+  //   pinned: false,
+  // },
+  // {
+  //   title: "Note 4",
+  //   body:
+  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus lacus sapien, ut rhoncus odio tristique vel.",
+  //   classColor: "card-white",
+  //   active: true,
+  //   pinned: false,
+  // },
 ];
 
 const templateEmpty = `
