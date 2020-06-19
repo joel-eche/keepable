@@ -15,8 +15,10 @@
     <header>
       <img class="logo" src="images/logo.svg" alt="Keepable logo" />
       <p>
-        <strong>Welcome to {keepable}</strong>. Today's Forecast for Santiago de
-        Surco, Lima Province, Peru: 18°, Cloudy
+        <strong>Welcome to {keepable}</strong>. Today's Forecast for
+        <span id="province"></span>, <span id="country"></span>:
+        <span id="temp"></span>,
+        <span id="weather"></span>
       </p>
     </header>
     <main>
@@ -36,11 +38,22 @@
       </nav>
       <section class="main-section">
         <div id="notes-section" class="notes-section">
-          <form-note></form-note>
+          <form-note style="color: red;"></form-note>
           <list-notes></list-notes>
+          <div class="message-info">
+            <img src="./images/key1.svg" alt="" />
+            Notes you add appear here
+            <img src="./images/key2.svg" alt="" />
+          </div>
         </div>
         <div id="trash-section" class="trash-section">
-          trash section
+          <div id="notes-section" class="notes-section">
+            <div class="message-info">
+              <img src="./images/key1.svg" alt="" />
+              Nothing in trash
+              <img src="./images/key2.svg" alt="" />
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -53,4 +66,6 @@
   <script src="./components/ListNotes.js"></script>
   <script src="./components/NoteCard.js"></script>
   <script src="./components/FormNote.js"></script>
+  <script src="./js/options.js"></script>
+  <script src="./js/geolocation.js"></script>
 </html>

@@ -116,6 +116,14 @@ footer a:hover {
   display: none;
 }
 
+.message-info {
+  text-align: center;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (min-width: 992px) {
   nav {
     width: 285px;

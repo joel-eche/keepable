@@ -28,6 +28,13 @@ const notes = [
     active: true,
     pinned: false,
   },
+  {
+    title: "Note 5",
+    body: "nuevo",
+    classColor: "card-white",
+    active: true,
+    pinned: false,
+  },
 ];
 
 const templateEmpty = `
