@@ -54,18 +54,29 @@ class NoteCard extends HTMLElement {
     super();
 
     this.attachShadow({ mode: "open" });
+    // this.shadowRoot.appendChild(template_note_card.content.cloneNode(true));
+    // this.shadowRoot.querySelector(".card-title").innerText = this.getAttribute(
+    //   "body"
+    // );
+    // this.shadowRoot.querySelector(".card").classList.add("card-white");
+  }
+
+  connectedCallback() {
+    console.log("connectedCallback NOTE");
     this.shadowRoot.appendChild(template_note_card.content.cloneNode(true));
     this.shadowRoot.querySelector(".card-title").innerText = this.getAttribute(
       "body"
     );
     this.shadowRoot.querySelector(".card").classList.add("card-white");
+    // this.render();
   }
 
-  connectedCallback() {
-    this.addEventListener("click", (e) => {
-      this.toggleCard();
-      console.log(e.target);
-    });
+  disconnectedCallback() {
+    console.log("disconnectedCallback NOTE");
+  }
+
+  attributeChangedCallback() {
+    console.log("attributeChangedCallback NOTE");
   }
 
   toggleCard() {

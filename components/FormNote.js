@@ -1,3 +1,5 @@
+// import NoteCard from "NoteCard.js";
+
 const template_form = document.createElement("template");
 
 template_form.innerHTML = `
@@ -45,7 +47,7 @@ template_form.innerHTML = `
           </div>
         </div>
       </div>
-      <button class="form-btn form-control__keep-it">
+      <button id="create-note" class="form-btn form-control__keep-it">
         Keep it!
       </button>
     </div>
@@ -58,6 +60,7 @@ class FormNote extends HTMLElement {
 
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template_form.content.cloneNode(true));
+    this.createNote();
   }
 
   connectedCallback() {
@@ -70,6 +73,28 @@ class FormNote extends HTMLElement {
 
   attributeChangedCallback() {
     console.log("attributeChangedCallback");
+  }
+
+  createNote() {
+    let button = this.shadowRoot.getElementById("create-note");
+    let listComponent = document.getElementById("listNotes");
+    button.addEventListener("click", (e) => {
+      // messageINfo.before("hola");
+      let listNotes = listComponent.shadowRoot.getElementById("list-notes");
+      // console.log(listNotes);
+      // console.log(this.createTemplateNote());
+      listNotes.prepend(this.createTemplateNote());
+      // console.log(e);
+    });
+  }
+
+  createTemplateNote() {
+    let body = this.shadowRoot.getElementById("body");
+    // console.log("body", body.value);
+    let note_card = document.createElement("note-card");
+    note_card.setAttribute("body", body.value);
+    note_card.setAttribute("class-color", "blue");
+    return note_card;
   }
 }
 
