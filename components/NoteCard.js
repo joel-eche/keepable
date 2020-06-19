@@ -44,7 +44,7 @@ template_note_card.innerHTML = `
         </div>
       </div>
       <span  id="trash-button" class="note-footer-icon footer-icon-trash"></span>
-      <span  id="back-button" class="footer-icon-back"></span>
+      <span  id="back-button" class="note-footer-icon  footer-icon-back"></span>
     </div>
   </div>
 </div>
@@ -53,24 +53,16 @@ template_note_card.innerHTML = `
 class NoteCard extends HTMLElement {
   constructor() {
     super();
-
     this.attachShadow({ mode: "open" });
-    // this.shadowRoot.appendChild(template_note_card.content.cloneNode(true));
-    // this.shadowRoot.querySelector(".card-title").innerText = this.getAttribute(
-    //   "body"
-    // );
-    // this.shadowRoot.querySelector(".card").classList.add("card-white");
   }
 
   connectedCallback() {
     console.log("connectedCallback NOTE");
     this.shadowRoot.appendChild(template_note_card.content.cloneNode(true));
-    this.shadowRoot.querySelector(".card-title").innerText = this.getAttribute(
-      "body"
-    );
+    this.shadowRoot.querySelector(".card-title").innerText = this.getAttribute("body");
     this.shadowRoot.querySelector(".card").classList.add("card-white");
-    this.movetoTrash();
-    // this.render();
+    this.shadowRoot.getElementById("trash-button").addEventListener("click", () => this.moveToTrash() );
+    this.shadowRoot.getElementById("back-button").addEventListener("click", () => this.moveToMain() );
   }
 
   disconnectedCallback() {
@@ -89,15 +81,44 @@ class NoteCard extends HTMLElement {
     console.log("note card", this);
   }
 
-  movetoTrash() {
-    let buttonTrash = this.shadowRoot.getElementById("trash-button");
-    // console.log("boton", buttonTrash);
-    let trashSection = document.getElementById("trash-section");
-    console.log(trashSection);
-    buttonTrash.addEventListener("click", (e) => {
-      trashSection.prepend(this);
-      console.log(e);
-    });
+  moveToMain() {
+    let mainSection = document.getElementById("list-actives");
+    let note_card = this.createTemplateNote(true);
+    mainSection.shadowRoot.getElementById("list-notes").prepend(note_card)
+    this.remove()
+  }
+
+  moveToTrash() {
+    let trashSection = document.getElementById("list-inactives");
+    let note_card = this.createTemplateNote(false);
+    let buttonBack = this.shadowRoot.getElementById("back-button");
+    let colorButton = this.shadowRoot.querySelector(".footer-icon-color");
+    trashSection.shadowRoot.getElementById("list-notes").prepend(note_card)
+    buttonBack.style.display = "inline-block";
+    colorButton.style.display = "none";
+    this.remove()
+    
+  }
+
+  createTemplateNote(active) {
+    let notes = JSON.parse(localStorage.getItem("notes"));
+    let index_note_to_modify = notes.findIndex((note) => note.id === parseInt(this.getAttribute("id")));
+    notes[index_note_to_modify].active = active;
+
+    let note_card = document.createElement("note-card");
+    note_card.setAttribute("id", notes[index_note_to_modify].id);
+    note_card.setAttribute("body", notes[index_note_to_modify].body);
+    note_card.setAttribute("class-color",  notes[index_note_to_modify].classColor);
+    note_card.classList.remove("active-note");
+    note_card.classList.add("inactive-note");
+
+    this.saveNotesInLocalStorage(notes);
+
+    return note_card;
+  }
+
+  saveNotesInLocalStorage(notes) {
+    localStorage.setItem("notes", JSON.stringify(notes));
   }
 }
 

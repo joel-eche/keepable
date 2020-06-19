@@ -70,3 +70,11 @@ button {
   background-color: transparent;
   border: none;
 }
+
+.inactive-note .footer-icon-color{
+  display: none;
+}
+
+.inactive-note .footer-icon-back{
+  display: inline-block;
+}

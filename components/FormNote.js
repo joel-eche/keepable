@@ -77,7 +77,7 @@ class FormNote extends HTMLElement {
 
   createNote() {
     let button = this.shadowRoot.getElementById("create-note");
-    let listComponent = document.getElementById("listNotes");
+    let listComponent = document.getElementById("list-actives");
     button.addEventListener("click", (e) => {
       // messageINfo.before("hola");
       let listNotes = listComponent.shadowRoot.getElementById("list-notes");
@@ -89,12 +89,25 @@ class FormNote extends HTMLElement {
   }
 
   createTemplateNote() {
+    let notes = JSON.parse(localStorage.getItem("notes"));
     let body = this.shadowRoot.getElementById("body");
     // console.log("body", body.value);
     let note_card = document.createElement("note-card");
+    note_card.setAttribute("id", notes.length + 1);
     note_card.setAttribute("body", body.value);
     note_card.setAttribute("class-color", "blue");
+    this.saveNoteInLocalStorage({body: body.value});
     return note_card;
+  }
+
+  saveNoteInLocalStorage({body}) {
+    let notes = JSON.parse(localStorage.getItem("notes"));
+    let note = new Note({
+      id: notes.length + 1,
+      body: body
+    });
+    notes.unshift(note);
+    localStorage.setItem("notes", JSON.stringify(notes));
   }
 }
 

@@ -113,8 +113,7 @@ footer a:hover {
 }
 
 .trash-section {
-  /* display: none; */
-  display: grid;
+  display: none;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, 24%);
   width: 100%;

@@ -40,20 +40,21 @@
       <section class="main-section">
         <div id="notes-section" class="notes-section">
           <form-note></form-note>
-          <list-notes id="listNotes"></list-notes>
-          <div class="message-info">
+          <list-notes id="list-actives" filter="active"></list-notes>
+          <!--<div class="message-info">
             <img src="./images/key1.svg" alt="" />
             Notes you add appear here
             <img src="./images/key2.svg" alt="" />
-          </div>
+          </div>-->
         </div>
         <div id="trash-section" class="trash-section">
+          <list-notes id="list-inactives" filter="inactive"></list-notes>
           <!-- <list-notes id="listTrash"></list-notes> -->
-          <div class="message-info">
+          <!--<div class="message-info">
             <img src="./images/key1.svg" alt="" />
             Nothing in trash
             <img src="./images/key2.svg" alt="" />
-          </div>
+          </div>-->
         </div>
       </section>
     </main>
@@ -62,7 +63,8 @@
       <a href="">@fer</a>
     </footer>
   </body>
-  <script src="./js/main.js"></script>
+  <!--<script src="./js/main.js"></script>-->
+  <script src="./js/init_keeps.js"></script>
   <script src="./components/ListNotes.js"></script>
   <script src="./components/NoteCard.js"></script>
   <script src="./components/FormNote.js"></script>

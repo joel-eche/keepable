@@ -1,5 +1,5 @@
 const template_notes = document.createElement("template");
-const notes = [
+/*const notes = [
   {
     title: "Note 1",
     body:
@@ -33,9 +33,11 @@ const notes = [
   //   pinned: false,
   // },
 ];
-
+*/
 const templateEmpty = `
-Empty
+  <div id="list-notes">
+    Empty
+  </div>
 `;
 
 const templateNotes = `
@@ -56,6 +58,7 @@ const templateNotes = `
 class ListNotes extends HTMLElement {
   constructor() {
     super();
+    let notes = this.filterNotes();
 
     template_notes.innerHTML = notes.length > 0 ? templateNotes : templateEmpty;
     console.log("constructor");
@@ -63,17 +66,7 @@ class ListNotes extends HTMLElement {
     this.shadowRoot.appendChild(template_notes.content.cloneNode(true));
   }
 
-  render() {
-    notes.forEach((note) => {
-      let note_card = document.createElement("note-card");
-      note_card.setAttribute("body", note.body);
-      note_card.setAttribute("class-color", note.classColor);
-      this.shadowRoot.getElementById("list-notes").appendChild(note_card);
-    });
-  }
-
   connectedCallback() {
-    console.log("connectedCallback");
     this.render();
   }
 
@@ -83,6 +76,26 @@ class ListNotes extends HTMLElement {
 
   attributeChangedCallback() {
     console.log("attributeChangedCallback");
+  }
+
+  filterNotes() {
+    let notes = JSON.parse(localStorage.getItem("notes"));
+    if (this.getAttribute("filter") === "active") {
+      return notes.filter((note) => note.active === true );
+    }
+    return notes.filter((note) => note.active === false );
+  }
+
+  render() {
+    let notes = this.filterNotes();
+    
+    notes.forEach((note) => {
+      let note_card = document.createElement("note-card");
+      note_card.setAttribute("id", note.id);
+      note_card.setAttribute("body", note.body);
+      note_card.setAttribute("class-color", note.classColor);
+      this.shadowRoot.getElementById("list-notes").appendChild(note_card);
+    });
   }
 }
 
