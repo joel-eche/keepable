@@ -9,6 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/note.css" />
   </head>
   <body>
     <header>
@@ -37,6 +38,8 @@
       </nav>
       <section class="main-section">
         <div id="notes-section" class="notes-section">
+          <form-note></form-note>
+          <list-notes></list-notes>
           <div class="message-info">
             <img src="./images/key1.svg" alt="" />
             Notes you add appear here
@@ -59,6 +62,10 @@
       <a href="">@fer</a>
     </footer>
   </body>
+  <script src="./js/main.js"></script>
+  <script src="./components/ListNotes.js"></script>
+  <script src="./components/NoteCard.js"></script>
+  <script src="./components/FormNote.js"></script>
   <script src="./js/options.js"></script>
   <script src="./js/geolocation.js"></script>
 </html>
