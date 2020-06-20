@@ -65,6 +65,8 @@ class FormNote extends HTMLElement {
 
   connectedCallback() {
     console.log("connectedCallback");
+
+    this.changeColor();
   }
 
   disconnectedCallback() {
@@ -94,17 +96,32 @@ class FormNote extends HTMLElement {
     note_card.setAttribute("body", body.value);
     note_card.setAttribute("class-color", "blue");
     note_card.setAttribute("active", "active-note");
-    this.saveNoteInLocalStorage({body: body.value});
+    this.saveNoteInLocalStorage({ body: body.value });
     return note_card;
   }
 
-  saveNoteInLocalStorage({body}) {
+  changeColor() {
+    let buttonsColor = this.shadowRoot.querySelectorAll(
+      ".color-dropdown-content-circulo"
+    );
+
+    buttonsColor.forEach((e) => {
+      e.addEventListener("click", () => {
+        let classCirculo = e.classList;
+        let color = classCirculo[1];
+        let cardnote = e.parentNode.parentNode.parentNode.parentNode.parentNode;
+        cardnote.setAttribute("class", "form-note " + color);
+      });
+    });
+  }
+
+  saveNoteInLocalStorage({ body }) {
     let notes = JSON.parse(localStorage.getItem("notes"));
     let array_ids = notes.map((note) => note.id);
     let max_id = Math.max(...array_ids);
     let note = new Note({
       id: max_id + 1,
-      body: body
+      body: body,
     });
     notes.unshift(note);
     localStorage.setItem("notes", JSON.stringify(notes));
