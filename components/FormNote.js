@@ -7,7 +7,8 @@ template_form.innerHTML = `
   <link rel="stylesheet" href="./css/note.css" />
   <div class="form-note form-white">
     <div class="form-content">
-      <textarea name="body" id="body" cols="30" rows="5" class="form-body" placeholder="Some great think!"></textarea>
+      <input type="text" id="color" value="color-FFFFFF" hidden />
+      <textarea style="background:none;" name="body" id="body" cols="30" rows="5" class="form-body" placeholder="Some great think!"></textarea>
     </div>
     <div class="form-control">
         <div class="note-footer">
@@ -92,10 +93,12 @@ class FormNote extends HTMLElement {
     let max_id = Math.max(...array_ids);
     let body = this.shadowRoot.getElementById("body");
     let note_card = document.createElement("note-card");
+    let color = this.shadowRoot.getElementById("color").value;
     note_card.setAttribute("id", max_id + 1);
     note_card.setAttribute("body", body.value);
-    note_card.setAttribute("class-color", "blue");
+    note_card.setAttribute("class-color", color);
     note_card.setAttribute("active", "active-note");
+
     this.saveNoteInLocalStorage({ body: body.value });
     return note_card;
   }
@@ -110,6 +113,9 @@ class FormNote extends HTMLElement {
         let classCirculo = e.classList;
         let color = classCirculo[1];
         let cardnote = e.parentNode.parentNode.parentNode.parentNode.parentNode;
+        this.shadowRoot.getElementById("color").value = color;
+        // console.log(this.shadowRoot.getElementById("color"));
+
         cardnote.setAttribute("class", "form-note " + color);
       });
     });

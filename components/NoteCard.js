@@ -58,14 +58,18 @@ class NoteCard extends HTMLElement {
 
   connectedCallback() {
     console.log("connectedCallback NOTE");
+    let color = this.getAttribute("class-color");
+    console.log(color);
     this.shadowRoot.appendChild(template_note_card.content.cloneNode(true));
     this.shadowRoot.querySelector(".card-title").innerText = this.getAttribute(
       "body"
     );
+    this.changeColor();
     this.shadowRoot
       .querySelector(".card")
       .classList.add(this.getAttribute("active"));
-    this.shadowRoot.querySelector(".card").classList.add("card-white");
+
+    this.shadowRoot.querySelector(".card").classList.add(color);
     this.shadowRoot
       .getElementById("trash-button")
       .addEventListener("click", () => this.moveToTrash());
@@ -95,8 +99,6 @@ class NoteCard extends HTMLElement {
     let note_card = this.createTemplateNote(true);
     mainSection.shadowRoot.getElementById("list-notes").prepend(note_card);
     this.remove();
-
-    this.changeColor();
   }
 
   moveToTrash() {
@@ -104,6 +106,7 @@ class NoteCard extends HTMLElement {
     if (this.getAttribute("active") === "active-note") {
       let trashSection = document.getElementById("list-inactives");
       let note_card = this.createTemplateNote(false);
+      note_card.changeColor();
       //let buttonBack = this.shadowRoot.getElementById("back-button");
       //let colorButton = this.shadowRoot.querySelector(".footer-icon-color");
       trashSection.shadowRoot.getElementById("list-notes").prepend(note_card);
@@ -163,6 +166,7 @@ class NoteCard extends HTMLElement {
         let classCirculo = e.classList;
         let color = classCirculo[1];
         let cardnote = e.parentNode.parentNode.parentNode.parentNode.parentNode;
+        console.log(cardnote);
         cardnote.setAttribute("class", "card " + color);
       });
     });
