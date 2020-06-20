@@ -65,6 +65,7 @@ class FormNote extends HTMLElement {
 
   connectedCallback() {
     console.log("connectedCallback");
+
     this.changeColor();
   }
 
@@ -98,6 +99,7 @@ class FormNote extends HTMLElement {
     this.saveNoteInLocalStorage({ body: body.value });
     return note_card;
   }
+
   changeColor() {
     let buttonsColor = this.shadowRoot.querySelectorAll(
       ".color-dropdown-content-circulo"

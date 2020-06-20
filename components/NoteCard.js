@@ -95,6 +95,7 @@ class NoteCard extends HTMLElement {
     let note_card = this.createTemplateNote(true);
     mainSection.shadowRoot.getElementById("list-notes").prepend(note_card);
     this.remove();
+
     this.changeColor();
   }
 
@@ -151,6 +152,7 @@ class NoteCard extends HTMLElement {
   saveNotesInLocalStorage(notes) {
     localStorage.setItem("notes", JSON.stringify(notes));
   }
+
   changeColor() {
     let buttonsColor = this.shadowRoot.querySelectorAll(
       ".color-dropdown-content-circulo"
