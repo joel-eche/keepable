@@ -168,6 +168,14 @@ class NoteCard extends HTMLElement {
         let cardnote = e.parentNode.parentNode.parentNode.parentNode.parentNode;
         console.log(cardnote);
         cardnote.setAttribute("class", "card " + color);
+
+
+        let notes = JSON.parse(localStorage.getItem("notes"));
+        let index_note_to_modify = notes.findIndex(
+          (note) => note.id === parseInt(this.getAttribute("id"))
+        );
+        notes[index_note_to_modify].classColor = color;
+        this.saveNotesInLocalStorage(notes);
       });
     });
   }

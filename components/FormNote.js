@@ -99,7 +99,7 @@ class FormNote extends HTMLElement {
     note_card.setAttribute("class-color", color);
     note_card.setAttribute("active", "active-note");
 
-    this.saveNoteInLocalStorage({ body: body.value });
+    this.saveNoteInLocalStorage({ body: body.value, classColor: color });
     return note_card;
   }
 
@@ -121,13 +121,14 @@ class FormNote extends HTMLElement {
     });
   }
 
-  saveNoteInLocalStorage({ body }) {
+  saveNoteInLocalStorage({body, classColor}) {
     let notes = JSON.parse(localStorage.getItem("notes"));
     let array_ids = notes.map((note) => note.id);
     let max_id = Math.max(...array_ids);
     let note = new Note({
       id: max_id + 1,
       body: body,
+      classColor: classColor
     });
     notes.unshift(note);
     localStorage.setItem("notes", JSON.stringify(notes));
