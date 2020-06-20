@@ -1,39 +1,5 @@
 const template_notes = document.createElement("template");
-/*const notes = [
-  {
-    title: "Note 1",
-    body:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus lacus sapien, ut rhoncus odio tristique vel.",
-    classColor: "card-white",
-    active: true,
-    pinned: false,
-  },
-  // {
-  //   title: "Note 2",
-  //   body:
-  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus lacus sapien, ut rhoncus odio tristique vel.",
-  //   classColor: "card-white",
-  //   active: true,
-  //   pinned: false,
-  // },
-  // {
-  //   title: "Note 3",
-  //   body:
-  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus lacus sapien, ut rhoncus odio tristique vel.",
-  //   classColor: "card-white",
-  //   active: true,
-  //   pinned: false,
-  // },
-  // {
-  //   title: "Note 4",
-  //   body:
-  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus lacus sapien, ut rhoncus odio tristique vel.",
-  //   classColor: "card-white",
-  //   active: true,
-  //   pinned: false,
-  // },
-];
-*/
+
 const templateEmpty = `
   <div id="list-notes">
     Empty
@@ -94,6 +60,7 @@ class ListNotes extends HTMLElement {
       note_card.setAttribute("id", note.id);
       note_card.setAttribute("body", note.body);
       note_card.setAttribute("class-color", note.classColor);
+      note_card.setAttribute("active", note.active ? "active-note" : "inactive-note");
       this.shadowRoot.getElementById("list-notes").appendChild(note_card);
     });
   }

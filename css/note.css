@@ -20,6 +20,14 @@
   background-color: white;
 }
 
+.active-note .footer-icon-back{
+  display: none;
+}
+
+.inactive-note .footer-icon-color{
+  display: none;
+}
+
 button {
   background-color: transparent;
   border: none;
@@ -70,11 +78,11 @@ button {
   background-color: transparent;
   border: none;
 }
-
+/*
 .inactive-note .footer-icon-color{
   display: none;
 }
 
 .inactive-note .footer-icon-back{
   display: inline-block;
-}
+}*/

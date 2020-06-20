@@ -79,31 +79,31 @@ class FormNote extends HTMLElement {
     let button = this.shadowRoot.getElementById("create-note");
     let listComponent = document.getElementById("list-actives");
     button.addEventListener("click", (e) => {
-      // messageINfo.before("hola");
       let listNotes = listComponent.shadowRoot.getElementById("list-notes");
-      // console.log(listNotes);
-      // console.log(this.createTemplateNote());
       listNotes.prepend(this.createTemplateNote());
-      // console.log(e);
     });
   }
 
   createTemplateNote() {
     let notes = JSON.parse(localStorage.getItem("notes"));
+    let array_ids = notes.map((note) => note.id);
+    let max_id = Math.max(...array_ids);
     let body = this.shadowRoot.getElementById("body");
-    // console.log("body", body.value);
     let note_card = document.createElement("note-card");
-    note_card.setAttribute("id", notes.length + 1);
+    note_card.setAttribute("id", max_id + 1);
     note_card.setAttribute("body", body.value);
     note_card.setAttribute("class-color", "blue");
+    note_card.setAttribute("active", "active-note");
     this.saveNoteInLocalStorage({body: body.value});
     return note_card;
   }
 
   saveNoteInLocalStorage({body}) {
     let notes = JSON.parse(localStorage.getItem("notes"));
+    let array_ids = notes.map((note) => note.id);
+    let max_id = Math.max(...array_ids);
     let note = new Note({
-      id: notes.length + 1,
+      id: max_id + 1,
       body: body
     });
     notes.unshift(note);

@@ -60,6 +60,7 @@ class NoteCard extends HTMLElement {
     console.log("connectedCallback NOTE");
     this.shadowRoot.appendChild(template_note_card.content.cloneNode(true));
     this.shadowRoot.querySelector(".card-title").innerText = this.getAttribute("body");
+    this.shadowRoot.querySelector(".card").classList.add(this.getAttribute("active"));
     this.shadowRoot.querySelector(".card").classList.add("card-white");
     this.shadowRoot.getElementById("trash-button").addEventListener("click", () => this.moveToTrash() );
     this.shadowRoot.getElementById("back-button").addEventListener("click", () => this.moveToMain() );
@@ -89,15 +90,28 @@ class NoteCard extends HTMLElement {
   }
 
   moveToTrash() {
-    let trashSection = document.getElementById("list-inactives");
-    let note_card = this.createTemplateNote(false);
-    let buttonBack = this.shadowRoot.getElementById("back-button");
-    let colorButton = this.shadowRoot.querySelector(".footer-icon-color");
-    trashSection.shadowRoot.getElementById("list-notes").prepend(note_card)
-    buttonBack.style.display = "inline-block";
-    colorButton.style.display = "none";
-    this.remove()
-    
+    console.log(this.getAttribute("active"))
+    if (this.getAttribute("active") === "active-note") {
+      let trashSection = document.getElementById("list-inactives");
+      let note_card = this.createTemplateNote(false);
+      //let buttonBack = this.shadowRoot.getElementById("back-button");
+      //let colorButton = this.shadowRoot.querySelector(".footer-icon-color");
+      trashSection.shadowRoot.getElementById("list-notes").prepend(note_card)
+      //buttonBack.style.display = "inline-block";
+      //colorButton.style.display = "none";
+      this.remove()
+    }
+    else {
+      this.removePermamentOfLocalStorage();
+      this.remove()
+    }
+  }
+
+  removePermamentOfLocalStorage() {
+    let notes = JSON.parse(localStorage.getItem("notes"));
+    let index_note_to_modify = notes.findIndex((note) => note.id === parseInt(this.getAttribute("id")));
+    notes.splice(index_note_to_modify, 1);
+    this.saveNotesInLocalStorage(notes);
   }
 
   createTemplateNote(active) {
@@ -109,8 +123,7 @@ class NoteCard extends HTMLElement {
     note_card.setAttribute("id", notes[index_note_to_modify].id);
     note_card.setAttribute("body", notes[index_note_to_modify].body);
     note_card.setAttribute("class-color",  notes[index_note_to_modify].classColor);
-    note_card.classList.remove("active-note");
-    note_card.classList.add("inactive-note");
+    note_card.setAttribute("active",  notes[index_note_to_modify].active ? "active-note" : "inactive-note");
 
     this.saveNotesInLocalStorage(notes);
 
