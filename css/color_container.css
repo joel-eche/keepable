@@ -52,33 +52,43 @@
 .color-FFFFFF {
   background: #ffffff;
   border: 1px solid #999b9e;
+  outline: none;
 }
 .color-F28B82 {
   background: #f28b82;
+  outline: none;
 }
 .color-FBBC04 {
   background: #fbbc04;
+  outline: none;
 }
 .color-FFF475 {
   background: #fff475;
+  outline: none;
 }
 .color-CCFF90 {
   background: #ccff90;
+  outline: none;
 }
 .color-A7FFEB {
   background: #a7ffeb;
+  outline: none;
 }
 .color-CBF0F8 {
   background: #cbf0f8;
+  outline: none;
 }
 .color-AECBFA {
   background: #aecbfa;
+  outline: none;
 }
 .color-D7AEFB {
   background: #d7aefb;
+  outline: none;
 }
 .color-FDCFE8 {
   background: #fdcfe8;
+  outline: none;
 }
 
 .icon-color-dropdown-content {

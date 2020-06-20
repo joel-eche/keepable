@@ -15,8 +15,12 @@ body {
   /* grid-template-rows: auto 100% auto; */
 }
 
+button {
+  outline: none;
+}
+
 main {
-  /* height: 76vh; */
+  min-height: 75vh;
   display: flex;
   color: #fff;
   /* padding: 1em; */
@@ -85,6 +89,7 @@ nav {
 
 button.active {
   background-color: #999b9e;
+  outline: none;
 }
 
 /* footer section */

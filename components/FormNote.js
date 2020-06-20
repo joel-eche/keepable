@@ -91,6 +91,10 @@ class FormNote extends HTMLElement {
     let notes = JSON.parse(localStorage.getItem("notes"));
     let array_ids = notes.map((note) => note.id);
     let max_id = Math.max(...array_ids);
+    if (!Number.isFinite(max_id)) {
+      max_id = 0;
+    }
+    console.log(max_id);
     let body = this.shadowRoot.getElementById("body");
     let note_card = document.createElement("note-card");
     let color = this.shadowRoot.getElementById("color").value;
@@ -100,7 +104,19 @@ class FormNote extends HTMLElement {
     note_card.setAttribute("active", "active-note");
 
     this.saveNoteInLocalStorage({ body: body.value, classColor: color });
+    this.validateEmptyList();
     return note_card;
+  }
+
+  validateEmptyList() {
+    let emptyNotes = document.getElementById("empty-notes");
+    let inactiveNotes = filterNotes(true);
+
+    if (inactiveNotes.length === 0) {
+      emptyNotes.style.display = "flex";
+    } else {
+      emptyNotes.style.display = "none";
+    }
   }
 
   changeColor() {
@@ -121,17 +137,28 @@ class FormNote extends HTMLElement {
     });
   }
 
-  saveNoteInLocalStorage({body, classColor}) {
+  saveNoteInLocalStorage({ body, classColor }) {
     let notes = JSON.parse(localStorage.getItem("notes"));
     let array_ids = notes.map((note) => note.id);
     let max_id = Math.max(...array_ids);
+    if (!Number.isFinite(max_id)) {
+      max_id = 0;
+    }
     let note = new Note({
       id: max_id + 1,
       body: body,
-      classColor: classColor
+      classColor: classColor,
     });
     notes.unshift(note);
     localStorage.setItem("notes", JSON.stringify(notes));
+  }
+
+  filterNotes(active) {
+    let notes = JSON.parse(localStorage.getItem("notes"));
+    if (active) {
+      return notes.filter((note) => note.active === true);
+    }
+    return notes.filter((note) => note.active === false);
   }
 }
 

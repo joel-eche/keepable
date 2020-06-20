@@ -112,11 +112,44 @@ class NoteCard extends HTMLElement {
       trashSection.shadowRoot.getElementById("list-notes").prepend(note_card);
       //buttonBack.style.display = "inline-block";
       //colorButton.style.display = "none";
+      this.validateEmptyListNotes();
       this.remove();
     } else {
       this.removePermamentOfLocalStorage();
       this.remove();
+      // this.validateEmptyListNotes();
+      this.validateEmptyListTrash();
     }
+  }
+
+  validateEmptyListTrash() {
+    let emptyTrash = document.getElementById("empty-trash");
+    let inactiveNotes = filterNotes(false);
+
+    if (inactiveNotes.length === 0) {
+      emptyTrash.style.display = "flex";
+    } else {
+      emptyTrash.style.display = "none";
+    }
+  }
+
+  validateEmptyListNotes() {
+    let emptyNotes = document.getElementById("empty-notes");
+    let inactiveNotes = filterNotes(true);
+
+    if (inactiveNotes.length === 0) {
+      emptyNotes.style.display = "flex";
+    } else {
+      emptyNotes.style.display = "none";
+    }
+  }
+
+  filterNotes(active) {
+    let notes = JSON.parse(localStorage.getItem("notes"));
+    if (active) {
+      return notes.filter((note) => note.active === true);
+    }
+    return notes.filter((note) => note.active === false);
   }
 
   removePermamentOfLocalStorage() {
@@ -167,8 +200,8 @@ class NoteCard extends HTMLElement {
         let color = classCirculo[1];
         let cardnote = e.parentNode.parentNode.parentNode.parentNode.parentNode;
         console.log(cardnote);
-        cardnote.setAttribute("class", "card " + color);
-
+        // cardnote.setAttribute("class", "card" +  + color);
+        cardnote.className = `card active-note ${color}`;
 
         let notes = JSON.parse(localStorage.getItem("notes"));
         let index_note_to_modify = notes.findIndex(

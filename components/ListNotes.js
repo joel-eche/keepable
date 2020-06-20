@@ -2,7 +2,7 @@ const template_notes = document.createElement("template");
 
 const templateEmpty = `
   <div id="list-notes">
-    Empty
+    
   </div>
 `;
 
@@ -44,8 +44,22 @@ class ListNotes extends HTMLElement {
   constructor() {
     super();
     let notes = this.filterNotes();
-
-    template_notes.innerHTML = notes.length > 0 ? templateNotes : templateEmpty;
+    if (this.getAttribute("filter") === "active") {
+      let emptyNotes = document.getElementById("empty-notes");
+      if (notes.length === 0) {
+        emptyNotes.style.display = "flex";
+      } else {
+        emptyNotes.style.display = "none";
+      }
+    } else {
+      let emptyTrash = document.getElementById("empty-trash");
+      if (notes.length === 0) {
+        emptyTrash.style.display = "flex";
+      } else {
+        emptyTrash.style.display = "none";
+      }
+    }
+    template_notes.innerHTML = templateNotes;
     console.log("constructor");
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template_notes.content.cloneNode(true));
