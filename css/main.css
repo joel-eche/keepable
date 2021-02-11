@@ -1,0 +1,150 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #1d2128;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  display: grid;
+  /* grid-template-rows: auto 100% auto; */
+}
+
+button {
+  outline: none;
+}
+
+main {
+  min-height: 75vh;
+  display: flex;
+  color: #fff;
+  /* padding: 1em; */
+}
+
+/* general */
+.flex {
+  display: flex;
+}
+.justify-content-center {
+  justify-content: center;
+}
+
+/* header section */
+
+header {
+  display: flex;
+  padding: 20px;
+  color: #fff;
+  border-bottom: 2px solid #e5e5e5;
+}
+
+/* menu section */
+
+nav {
+  border-right: 2px solid #e5e5e5;
+  width: 125px;
+  /* height: 100%; */
+}
+
+.logo {
+  margin-right: 1.5em;
+  width: 20%;
+}
+
+/* menu section */
+
+.menu {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  padding-top: 10px;
+}
+
+.menu button {
+  color: #fff;
+  width: 120px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: none;
+  padding: 15px;
+  border-radius: 0px 25px 25px 0px;
+  transition: all 0.2s ease;
+}
+
+.menu img {
+  margin-right: 0.5rem;
+}
+
+/* .menu button:hover {
+  background-color: #999b9e;
+} */
+
+button.active {
+  background-color: #999b9e;
+  outline: none;
+}
+
+/* footer section */
+
+footer {
+  border-top: 2px solid #e5e5e5;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* main section , notes and trash */
+
+.main-section {
+  padding: 1em;
+  width: 100%;
+}
+
+.trash-section {
+  display: none;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, 24%);
+  width: 100%;
+  margin-top: 60px;
+}
+
+.message-info {
+  text-align: center;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+@media (min-width: 992px) {
+  nav {
+    width: 285px;
+  }
+
+  .menu button {
+    width: 280px;
+  }
+
+  .logo {
+    margin-right: 130px;
+    width: auto;
+  }
+}

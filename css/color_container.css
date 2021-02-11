@@ -1,0 +1,115 @@
+.note {
+  width: 260px;
+  height: 260px;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: black;
+  position: relative;
+  margin-left: 200px;
+}
+.note-content {
+  min-height: calc(100% - 38px);
+}
+.note-footer {
+  height: 38px;
+}
+.note-footer-icon {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  background-size: cover;
+}
+.footer-icon-color {
+  background-image: url(../img/icon_without_hover.svg);
+}
+.footer-icon-color:hover {
+  background-image: url(../img/icon_with_hover.svg);
+}
+
+.footer-icon-trash {
+  background-image: url(../img/trash.svg);
+}
+.footer-icon-trash:hover {
+  background-image: url(../img/trash_with_hover.svg);
+}
+
+.footer-icon-back {
+  background-image: url(../img/back.svg);
+  width: 36px;
+  height: 36px;
+}
+.footer-icon-back:hover {
+  background-image: url(../img/back_hover.svg);
+}
+
+.color-dropdown-content-circulo {
+  width: 25px;
+  height: 25px;
+  border-radius: 100px;
+  margin: 2.5px;
+  border: none;
+}
+.color-FFFFFF {
+  background: #ffffff;
+  border: 1px solid #999b9e;
+  outline: none;
+}
+.color-F28B82 {
+  background: #f28b82;
+  outline: none;
+}
+.color-FBBC04 {
+  background: #fbbc04;
+  outline: none;
+}
+.color-FFF475 {
+  background: #fff475;
+  outline: none;
+}
+.color-CCFF90 {
+  background: #ccff90;
+  outline: none;
+}
+.color-A7FFEB {
+  background: #a7ffeb;
+  outline: none;
+}
+.color-CBF0F8 {
+  background: #cbf0f8;
+  outline: none;
+}
+.color-AECBFA {
+  background: #aecbfa;
+  outline: none;
+}
+.color-D7AEFB {
+  background: #d7aefb;
+  outline: none;
+}
+.color-FDCFE8 {
+  background: #fdcfe8;
+  outline: none;
+}
+
+.icon-color-dropdown-content {
+  display: none;
+  position: absolute;
+  bottom: 37px;
+  left: -60px;
+  background: #ffffff;
+  border-radius: 8px;
+  width: 155px;
+  height: 65px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  padding: 2.5px;
+}
+.note-footer-icon-color {
+  display: inline-block;
+}
+
+.note-footer-icon-color:hover .icon-color-dropdown-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
